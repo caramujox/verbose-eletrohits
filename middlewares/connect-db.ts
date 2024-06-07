@@ -1,8 +1,12 @@
 import type { NextApiRequest, NextApiHandler, NextApiResponse } from 'next'
 import mongoose from 'mongoose'
+import type { DefaultResponseMsg } from '@/types/DefaultResponse'
 
 export const connectMongoDB = (handler: NextApiHandler) => {
-  let connect = async (req: NextApiRequest, res: NextApiResponse) => {
+  let connect = async (
+    req: NextApiRequest,
+    res: NextApiResponse<DefaultResponseMsg>
+  ) => {
     //check connection
     if (mongoose.connections[0].readyState) {
       return handler(req, res)
