@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { connectMongoDB } from '../../middlewares/connect-db'
 import type { DefaultResponseMsg } from '../../types/DefaultResponse'
 
-const handler = (
+const loginHandler = (
   req: NextApiRequest,
   res: NextApiResponse<DefaultResponseMsg>
 ) => {
@@ -15,4 +15,4 @@ const handler = (
   }
   return res.status(405).json({ error: 'Unsupported Method' })
 }
-export default connectMongoDB(handler)
+export default connectMongoDB(loginHandler)
